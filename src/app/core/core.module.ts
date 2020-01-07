@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {CoreComponent} from './core.component'
+import {CoreComponent} from './core.component';
 
 @NgModule({
   declarations: [CoreComponent ],
