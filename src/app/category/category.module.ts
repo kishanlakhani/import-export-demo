@@ -1,4 +1,4 @@
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';  //common and browsermodule
 import { NgModule } from '@angular/core';
 
 import { CategoryComponent } from './category.component';
