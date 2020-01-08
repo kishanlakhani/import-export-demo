@@ -3,10 +3,12 @@
         <tr>
             <td>Id</td>
             <td>Namkeen Name</td>
+            <td>Price</td>
         </tr>
         <tr *ngFor="let namkeen of NamkeenList">
-            <td>{{namkeen.id}}</td>
+            <td>{{namkeen.idNo}}</td>
             <td>{{namkeen.namkeenName}}</td>
+            <td>{{namkeen.price }}</td>
         </tr>
 
     </table>

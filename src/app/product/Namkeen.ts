@@ -1,18 +1,19 @@
-export interface Namkeen {
-    id:number,
-    namkeenName:string
+export interface INamkeen {
+    idNo:number,
+    namkeenName:string,
+    price:number
 }
 
 
 
-export const NAMKEEN : Namkeen[]= [
-    {id:1,namkeenName:"Aloo Bhujia" },
-    {id:2,namkeenName:"Kashmiri Taste" },
-    {id:3,namkeenName:"Bhujia" },
-    {id:4,namkeenName:"Ratlami Sev" },
-    {id:5,namkeenName:"Gujarati Taste" },
-    {id:6,namkeenName:"Tasty Peanuts" },
-    {id:7,namkeenName:"Raita Boondi" },
-    {id:8,namkeenName:"Namakpara" },
-    {id:9,namkeenName:"Namakpara" },
+export let NAMKEEN : INamkeen[]= [
+    {idNo:1,namkeenName:"Aloo Bhujia",price:5 },
+    {idNo:2,namkeenName:"Kashmiri Taste",price:10 },
+    {idNo:3,namkeenName:"Bhujia" ,price:20},
+    {idNo:4,namkeenName:"Ratlami Sev" ,price:30},
+    {idNo:5,namkeenName:"Gujarati Taste" ,price:50},
+    {idNo:6,namkeenName:"Tasty Peanuts" ,price:80},
+    {idNo:7,namkeenName:"Raita Boondi",price:10 },
+    {idNo:8,namkeenName:"Namakpara" ,price:5},
+    {idNo:9,namkeenName:"Namakpara" ,price:15}
 ];

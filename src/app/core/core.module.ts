@@ -1,15 +1,14 @@
-import {SharedModule} from '../shared/shared.module'   //commona and browsermodule
 import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+import {SharedModule} from "../shared/shared.module";
+import { from } from 'rxjs';
 
-import {CoreComponent} from './core.component';
 
 @NgModule({
-  declarations: [CoreComponent ],
+  declarations: [],
   imports: [
     SharedModule
-  ],
-  exports:[
-  CoreComponent
+    // CommonModule
   ]
 })
 export class CoreModule { }
