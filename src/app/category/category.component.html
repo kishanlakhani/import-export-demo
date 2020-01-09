@@ -1,10 +1,53 @@
 <!-- for dropdownbox and input box  -->
 <h2>Namkeen</h2>
-<select name="" id="namkeenName" *ngIf="isHideProduct" (change)="getSelectValue($event)" >
+
+<select class="selectpicker" name="" id="namkeenName" *ngIf="isHideProduct" (change)="getSelectValue($event)" >
+  <optgroup label="">
+    <option value="" disabled>change namkeen price</option>
+    <option  *ngFor="let item of namkeenName"  [value]="item">{{ item }}</option>
+
+  </optgroup>
+</select>
+
+<!-- <input  > -->
+<div class="input-group mb-3" *ngIf="isShowPriceInput &&  isHideProduct" type="text">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Price</span>
+  </div>
+  <input type="text" class="form-control"  [(ngModel)]="showPriceInput" (input)="newPriceGet($event)" placeholder="price" aria-label="" aria-describedby="basic-addon1">
+</div>
+
+
+  <div *ngIf="!selectIndex; else notShow" >
+      <app-product></app-product>  
+  </div>
+  <div *ngIf="selectIndex; else notShow" >
+    <app-product  [selectIndex]="selectIndex" [newPriceSend]="newPriceSend"></app-product> 
+</div>
+  <ng-template #notShow>
+   
+  </ng-template> 
+
+
+
+
+
+
+
+
+
+    <!-- <select name="" id="namkeenName" *ngIf="isHideProduct" (change)="getSelectValue($event)" >
 <option value="" disabled>select change price</option>
 <option  *ngFor="let item of namkeenName"  [value]="item">{{ item }}</option>
-</select>
-<input *ngIf="isShowPriceInput &&  isHideProduct" type="text" [(ngModel)]="showPriceInput" (input)="newPriceGet($event)">
+</select> -->
+
+
+
+
+
+
+
+
 
 <!-- for hide and show product  -->
   <!-- <hr>
@@ -16,13 +59,11 @@
   <!-- <div *ngIf="!selectValue; else notShow" >
     <app-product></app-product>  
 </div> -->
-  <div *ngIf="!selectIndex; else notShow" >
-      <app-product></app-product>  
-  </div>
-    <ng-template #notShow>
-      <app-product  [selectIndex]="selectIndex" [newPriceSend]="newPriceSend"></app-product>
-    </ng-template> 
-<!-- </div> -->
+
+
+
+
+    <!-- </div> -->
 
   <!-- 
 <div *ngIf="isHideProduct">

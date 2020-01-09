@@ -7,10 +7,10 @@ import { NAMKEEN,INamkeen } from './Namkeen';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit ,OnDestroy{
-  NamkeenList:INamkeen[];
-  @Input() newPriceSend:number=0; 
-  @Input() selectIndex:number=0;
-  namekeenList:INamkeen[];
+  namkeenList:INamkeen[];
+  @Input() newPriceSend?:number=0; 
+  @Input() selectIndex?:number=0;
+  // namkeenList1:INamkeen[];
   namkeenName:string[];
   construtor() { 
     
@@ -18,18 +18,21 @@ export class ProductComponent implements OnInit ,OnDestroy{
 
   selectIndexX:number=0;
   ngOnInit() {
-    this.NamkeenList = NAMKEEN;
+    this.namkeenList = NAMKEEN;
     console.log("product ngonit call")
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("ngOnChanges product call")
-    console.log(this.selectIndex);
-    console.log(this.newPriceSend);
-    this.namekeenList = NAMKEEN;
+    console.log("selected Index : ", this.selectIndex);
+    console.log("new Price Index : ",this.newPriceSend);
+    console.log(this.namkeenList)
+    this.namkeenList = NAMKEEN;
+    console.log('changes :: ',changes);
+    // console.log('this.namekeenList :: ', this.namkeenList1);
     // this.namkeenName = this.namekeenList.map(namkeen => namkeen.namkeenName);
     // console.log(this.namekeenList[this.selectIndexX].price);
-    this.NamkeenList[this.selectIndex-1].price = this.newPriceSend;
+    this.namkeenList[this.selectIndex-1].price = this.newPriceSend;
 
   }
   ngOnDestroy(): void {

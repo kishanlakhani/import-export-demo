@@ -24,7 +24,7 @@ export class CategoryComponent implements OnInit {
   selectIndex:number;
   newPriceSend :number; 
   showPriceInput:string="";
-  
+  i:number;
   constructor() { }
  
   ngOnInit() {
@@ -41,7 +41,7 @@ export class CategoryComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add '${implements OnChanges}' to the class.
-    console.log("category componet ngOnChanege call " +changes.isCategoryShow.previousValue + " to " + changes.isCategoryShow.currentValue );
+    // console.log("category componet ngOnChanege call " +changes.isCategoryShow.previousValue + " to " + changes.isCategoryShow.currentValue );
     
   }
 
@@ -62,6 +62,7 @@ export class CategoryComponent implements OnInit {
   // input box price value get when drop down value select
   getSelectValue(event){
     this.selectIndex = event.srcElement.options.selectedIndex;
+    this.i=this.selectIndex;
     // this.selectIndex= event.srcElementoptions.selectedIndex;
     // console.log(this.selectIndex);
     this.newPriceSend= this.namekeenList[this.selectIndex-1].price;
@@ -71,7 +72,12 @@ export class CategoryComponent implements OnInit {
   }
 
   newPriceGet(event){
-    // console.log(event);
+    this.i=this.selectIndex;
+    // this.selectIndex= event.srcElementoptions.selectedIndex;
+    // console.log(this.selectIndex);
+    this.selectIndex=this.i;
+    this.newPriceSend= this.namekeenList[this.selectIndex-1].price;
+    this.showPriceInput = String(this.newPriceSend);
     this.newPriceSend = Number((<HTMLInputElement>event.target).value);
     this.showPriceInput = String(this.newPriceSend);
     this.isShowPriceInput = true;

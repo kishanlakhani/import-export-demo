@@ -1,5 +1,5 @@
 <div>
-    <table>
+    <!-- <table class="table">
         <tr>
             <td>IdNo</td>
             <td>Namkeen Name</td>
@@ -11,5 +11,24 @@
             <td>{{namkeen.price }}</td>
         </tr>
 
-    </table>
+    </table> -->
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Namkeen Name</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let namkeen of namkeenList">
+            <td>{{namkeen.idNo}}</td>
+            <td>{{namkeen.namkeenName}}</td>
+            <td>{{namkeen.price }}</td>
+        </tr>
+      
+    </tbody>
+  </table>
+
 </div>
