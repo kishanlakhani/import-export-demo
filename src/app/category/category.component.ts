@@ -10,11 +10,10 @@ export class CategoryComponent implements OnInit {
   // newPrice come from input box for change partucular product price and two way databinding
   newPrice:number;
   // all NAMKEEN data store in NamkeenList
-  NamekeenList:INamkeen[];
+  namekeenList:INamkeen[];
   // for drop down store only name use NamkeenName 
-  NamkeenName:string[];
+  namkeenName:string[];
 
-  name:string;
   // isShowPriceInput for when drop down select then after show input box
   isShowPriceInput:boolean;
   //isHideProduct for product component show and hide 
@@ -23,17 +22,18 @@ export class CategoryComponent implements OnInit {
   selectValue:string;
   // selectIndex index of selectValue in NAMKEEN
   selectIndex:number;
+  newPriceSend :number; 
+  showPriceInput:string="";
   
   constructor() { }
  
   ngOnInit() {
     console.log("category ngOnIt call")
     this.newPrice=0;
-    this.NamekeenList = NAMKEEN;
-    this.NamkeenName = this.NamekeenList.map(namkeen=>{
+    this.namekeenList= NAMKEEN;
+    this.namkeenName = this.namekeenList.map(namkeen=>{
       return namkeen.namkeenName;
     });
-    this.name='';
     this.isShowPriceInput=false;
     this.isHideProduct=true;
   }
@@ -60,23 +60,43 @@ export class CategoryComponent implements OnInit {
   }
 
   // input box price value get when drop down value select
-  getPrice(){
-    console.log(this.name)
-
-    this.selectValue = (<HTMLInputElement>document.getElementById('namkeenName')).value;
-    let s = NAMKEEN[this.NamkeenName.indexOf(this.selectValue)].idNo;
-    this.selectIndex = s;
-    console.log(this.selectIndex)    
-    let p  = NAMKEEN[this.NamkeenName.indexOf(this.selectValue)].price;
-    this.newPrice = Number(p);
+  getSelectValue(event){
+    this.selectIndex = event.srcElement.options.selectedIndex;
+    // this.selectIndex= event.srcElementoptions.selectedIndex;
+    // console.log(this.selectIndex);
+    this.newPriceSend= this.namekeenList[this.selectIndex-1].price;
+    this.showPriceInput = String(this.newPriceSend);
     this.isShowPriceInput = true;
+
   }
 
+  newPriceGet(event){
+    // console.log(event);
+    this.newPriceSend = Number((<HTMLInputElement>event.target).value);
+    this.showPriceInput = String(this.newPriceSend);
+    this.isShowPriceInput = true;
 
-  
- a(){
-   console.log("kkk")
- }
+  }
+ 
   
 
 }
+
+
+
+
+
+
+
+
+//  console.log(event);
+//     this.selectValue = (<HTMLInputElement>event.target).value;
+//     // console.log(event.srcElementoptions.selectedIndex)
+//     // console.log(this.namekeenList[this.namkeenName.indexOf(this.selectValue)-1].price)
+//     console.log(this.namekeenList[this.namkeenName.indexOf(this.selectValue)])
+//     this.selectIndex = event.srcElement.options.selectedIndex;
+//     console.log("select index" + typeof this.selectIndex + this.selectIndex)
+//     this.newPriceSend = this.namekeenList[(this.selectIndex)].price;
+//     console.log(this.selectValue +   " " + this.newPriceSend)
+//     this.showPriceInput = String(this.newPriceSend);
+//     this.isShowPriceInput = true;

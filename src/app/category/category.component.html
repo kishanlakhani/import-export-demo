@@ -1,25 +1,28 @@
 <!-- for dropdownbox and input box  -->
 <h2>Namkeen</h2>
-<select name="" id="namkeenName" *ngIf="isHideProduct"  (click)="getPrice()" >
+<select name="" id="namkeenName" *ngIf="isHideProduct" (change)="getSelectValue($event)" >
 <option value="" disabled>select change price</option>
-<option  *ngFor="let item of NamkeenName"  [value]="item">{{ item }}</option>
+<option  *ngFor="let item of namkeenName"  [value]="item">{{ item }}</option>
 </select>
-<input *ngIf="isShowPriceInput &&  isHideProduct" type="number" [(ngModel)]="newPrice">
+<input *ngIf="isShowPriceInput &&  isHideProduct" type="text" [(ngModel)]="showPriceInput" (input)="newPriceGet($event)">
 
 <!-- for hide and show product  -->
-<hr>
-<button (click)="hideProduct()">Hide Product List</button>
-<hr>
+  <!-- <hr>
+  <button (click)="hideProduct()">Hide Product List</button>
+  <hr> -->
 
 <!-- for product category -->
-<div *ngIf="isHideProduct">
-  <div *ngIf="!selectValue; else notShow" >
+<!-- <div *ngIf="isHideProduct"> -->
+  <!-- <div *ngIf="!selectValue; else notShow" >
+    <app-product></app-product>  
+</div> -->
+  <div *ngIf="!selectIndex; else notShow" >
       <app-product></app-product>  
   </div>
     <ng-template #notShow>
-      <app-product [priceChangeX]="newPrice" [selectIndexX]="selectIndex"></app-product>
+      <app-product  [selectIndex]="selectIndex" [newPriceSend]="newPriceSend"></app-product>
     </ng-template> 
-</div>
+<!-- </div> -->
 
   <!-- 
 <div *ngIf="isHideProduct">
